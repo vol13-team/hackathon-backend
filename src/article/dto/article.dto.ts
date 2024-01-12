@@ -12,3 +12,9 @@ export class CreateArticleDto {
   @IsString()
   articleThumbnail: string;
 }
+
+export class GetArticleDto {
+  @IsString()
+  @IsNotEmpty()
+  articleId: string;
+}
