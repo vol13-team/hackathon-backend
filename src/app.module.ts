@@ -8,7 +8,6 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { UserService } from './user/user.service';
 import { PrismaModule } from './prisma/prisma.module';
-import { TagModule } from './tag/tag.module';
 import { ConfigModule } from '@nestjs/config';
 import { ArticleModule } from './article/article.module';
 import { TimesService } from './times/times.service';
@@ -24,7 +23,6 @@ import { QiitaApiModule } from './qiita_api/qiita_api.module';
     AuthModule,
     UserModule,
     PrismaModule,
-    TagModule,
     ArticleModule,
     QiitaApiModule,
   ],
