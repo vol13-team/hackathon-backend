@@ -10,6 +10,15 @@ export class ArticleService {
     private config: ConfigService,
   ) {}
 
+  async findAll() {
+    try {
+      const articles = await this.prisma.article.findMany();
+      return articles;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async create(dto: CreateArticleDto) {
     try {
       const article = await this.prisma.article.create({
