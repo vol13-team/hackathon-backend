@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ArticleService } from './article.service';
-import { CreateArticleDto } from './dto';
+import { CreateArticleDto, GetArticleDto } from './dto';
 
 @Controller('article')
 export class ArticleController {
@@ -9,6 +9,11 @@ export class ArticleController {
   @Get()
   findAll() {
     return this.articleService.findAll();
+  }
+
+  @Get('one/:id')
+  findOne(@Param('id') dto: GetArticleDto) {
+    return this.articleService.findOne(dto);
   }
 
   @Post()
