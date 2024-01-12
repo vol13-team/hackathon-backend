@@ -31,7 +31,7 @@ export class ArticleService {
         data: {
           ArticleTitle: dto.articleTitle,
           ArticleLink: dto.articleLink,
-          ArticleThumbnail: dto.articleThumbnail,
+          ArticleUserName: dto.articleUserName,
         },
       });
       return article;
@@ -46,7 +46,7 @@ export class ArticleService {
         data: {
           ArticleTitle: dto.articleTitle,
           ArticleLink: dto.articleLink,
-          ArticleThumbnail: dto.articleThumbnail,
+          ArticleUserName: dto.articleUserName,
         },
       });
       return article;

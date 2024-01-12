@@ -10,7 +10,7 @@ export class CreateArticleDto {
   articleLink: string;
 
   @IsString()
-  articleThumbnail: string;
+  articleUserName: string;
 }
 
 export class UpdateArticleDto {
@@ -23,7 +23,7 @@ export class UpdateArticleDto {
   articleLink: string;
 
   @IsString()
-  articleThumbnail: string;
+  articleUserName: string;
 }
 
 export class DelateArticleDto {
