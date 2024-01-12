@@ -1,22 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-
-
-
 model User {
-  UserID     Int       @id @default(autoincrement())
+  UserID String @id @default(uuid())
   UserName   String
-  UserIcon   String?
   created_at DateTime  @default(now())
   Update_at  DateTime  @updatedAt
   Issue      Issue[]
@@ -24,16 +8,16 @@ model User {
 }
 
 model Issue {
-  IssueID          Int       @id @default(autoincrement())
+  IssueID         String @id @default(uuid())
   IssueName        String
   IsuueDetail      String
   Visibility       Boolean
   Options          IssueOptions @relation(fields: [OptionsID], references: [OptionID])
-  OptionsID        Int
+  OptionsID        String
   PostUser         User       @relation(fields: [PostUserID], references: [UserID])
-  PostUserID       Int
+  PostUserID       String
   Tags             Tags[]     @relation(name: "IssueTags")
-  IssueTagsID      Int?
+  IssueTagsID      String?
   explanation      String?
   created_at       DateTime  @default(now())
   Update_at        DateTime  @updatedAt
@@ -42,37 +26,37 @@ model Issue {
 }
 
 model Article {
-  ArticleID  Int       @id @default(autoincrement())
+  ArticleID  String @id @default(uuid())
   ArticleTitle  String
   ArticleLink  String
-  ArticleThumbnail  String
+  ArticleThumbnail  String?
   Issue       Issue?
 }
 
 model Answer {
-  AnswerID      Int      @id @default(autoincrement())
+  AnswerID      String @id @default(uuid())
   Decision      Boolean
   Issue         Issue    @relation(fields: [IssueID], references: [IssueID])
-  IssueID       Int
+  IssueID       String
   AnserUser     User     @relation(fields: [AnserUserID], references: [UserID])
-  AnserUserID   Int
+  AnserUserID   String
   selectOption  IssueOptions @relation(fields: [selectOptionID], references: [OptionID])
-  selectOptionID Int
+  selectOptionID String
 }
 
 model IssueOptions {
-  OptionID         Int       @id @default(autoincrement())
+  OptionID          String @id @default(uuid())
   Option1          String
   Option2          String
   Option3          String
   Option4          String
-  CorrectOption    Int
+  CorrectOption    String
   Issue            Issue[]
   selectedAnswers  Answer[]
 }
 
 model Tags {
-  TagID   Int      @id @default(autoincrement())
+  TagID   String @id @default(uuid())
   TadName String
   Issue   Issue[]  @relation(name: "IssueTags")
 }
