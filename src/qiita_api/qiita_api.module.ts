@@ -4,6 +4,6 @@ import { QiitaApiService } from './qiita_api.service';
 
 @Module({
   controllers: [QiitaApiController],
-  providers: [QiitaApiService]
+  providers: [QiitaApiService],
 })
 export class QiitaApiModule {}
