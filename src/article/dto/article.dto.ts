@@ -9,5 +9,6 @@ export class CreateArticleDto {
   @IsNotEmpty()
   articleLink: string;
 
-  articleThumbnail?: string;
+  @IsString()
+  articleThumbnail: string;
 }
