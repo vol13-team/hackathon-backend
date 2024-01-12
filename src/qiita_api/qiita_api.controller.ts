@@ -8,4 +8,8 @@ export class QiitaApiController {
   getPickUp(@Param('page') page: number) {
     return this.qiitaApiService.getPickUp(page);
   }
+  @Get('search/:query/:page')
+  search(@Param('query') query: string, @Param('page') page: number) {
+    return this.qiitaApiService.search(query, page);
+  }
 }
