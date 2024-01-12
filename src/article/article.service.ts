@@ -1,14 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { CreateArticleDto } from './dto';
+import { CreateArticleDto, GetArticleDto } from './dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ArticleService {
-  constructor(
-    private readonly prisma: PrismaService,
-    private config: ConfigService,
-  ) {}
+  constructor(private readonly prisma: PrismaService) {}
 
   async findAll() {
     try {
@@ -19,6 +15,16 @@ export class ArticleService {
     }
   }
 
+  async findOne(dto: GetArticleDto) {
+    try {
+      const article = await this.prisma.article.findUnique({
+        where: { ArticleID: dto.articleId },
+      });
+      return article;
+    } catch (error) {
+      throw error;
+    }
+  }
   async create(dto: CreateArticleDto) {
     try {
       const article = await this.prisma.article.create({
