@@ -25,3 +25,9 @@ export class UpdateArticleDto {
   @IsString()
   articleThumbnail: string;
 }
+
+export class DelateArticleDto {
+  @IsString()
+  @IsNotEmpty()
+  articleID: string;
+}
