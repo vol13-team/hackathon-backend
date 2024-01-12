@@ -38,7 +38,7 @@ model Article {
   ArticleID  String @id @default(uuid())
   ArticleTitle  String
   ArticleLink  String
-  ArticleThumbnail  String?
+  ArticleUserName  String
   Issue       Issue?
 }
 
