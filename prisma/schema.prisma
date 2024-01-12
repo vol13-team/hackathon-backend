@@ -16,7 +16,6 @@ datasource db {
 model User {
   UserID     Int       @id @default(autoincrement())
   UserName   String
-  UserIcon   String?
   created_at DateTime  @default(now())
   Update_at  DateTime  @updatedAt
   Issue      Issue[]
@@ -45,7 +44,7 @@ model Article {
   ArticleID  Int       @id @default(autoincrement())
   ArticleTitle  String
   ArticleLink  String
-  ArticleThumbnail  String
+  ArticleThumbnail  String?//?はnull許容
   Issue       Issue?
 }
 
