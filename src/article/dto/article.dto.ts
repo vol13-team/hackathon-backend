@@ -1,6 +1,13 @@
-export class ArticleDto {
-  articleID: string;
+import { IsNotEmpty, IsString } from 'class-validator';
+
+export class CreateArticleDto {
+  @IsString()
+  @IsNotEmpty()
   articleTitle: string;
+
+  @IsString()
+  @IsNotEmpty()
   articleLink: string;
+
   articleThumbnail?: string;
 }
