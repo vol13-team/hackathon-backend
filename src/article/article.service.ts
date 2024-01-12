@@ -1,8 +1,27 @@
 import { Injectable } from '@nestjs/common';
+import { CreateArticleDto } from './dto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class ArticleService {
-  //https://qiita.com/api/v2/items?pickup=true&per_page=20をたたく
+  constructor(
+    private readonly prisma: PrismaService,
+    private config: ConfigService,
+  ) {}
 
-  create(): any {}
+  async create(dto: CreateArticleDto) {
+    try {
+      const article = await this.prisma.article.create({
+        data: {
+          ArticleTitle: dto.articleTitle,
+          ArticleLink: dto.articleLink,
+          ArticleThumbnail: dto.articleThumbnail,
+        },
+      });
+      return article;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
