@@ -25,7 +25,6 @@ model Issue {
   OptionsID        String
   PostUser         User       @relation(fields: [PostUserID], references: [UserID])
   PostUserID       String
-  Tags             Tags[]     @relation(name: "IssueTags")
   IssueTagsID      String?
   explanation      String?
   created_at       DateTime  @default(now())
@@ -64,8 +63,3 @@ model IssueOptions {
   selectedAnswers  Answer[]
 }
 
-model Tags {
-  TagID   String @id @default(uuid())
-  TadName String
-  Issue   Issue[]  @relation(name: "IssueTags")
-}
