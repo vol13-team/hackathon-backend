@@ -11,6 +11,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { TagModule } from './tag/tag.module';
 import { ConfigModule } from '@nestjs/config';
 import { ArticleModule } from './article/article.module';
+import { TimesService } from './times/times.service';
 
 @Module({
   imports: [
@@ -26,6 +27,6 @@ import { ArticleModule } from './article/article.module';
     ArticleModule,
   ],
   controllers: [AppController, AuthController, UserController],
-  providers: [AppService, AuthService, UserService],
+  providers: [AppService, AuthService, UserService, TimesService],
 })
 export class AppModule {}
