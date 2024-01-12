@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ArticleService } from './article.service';
-import { CreateArticleDto, GetArticleDto } from './dto';
+import { CreateArticleDto } from './dto';
 
 @Controller('article')
 export class ArticleController {
@@ -11,9 +11,9 @@ export class ArticleController {
     return this.articleService.findAll();
   }
 
-  @Get('one/:id')
-  findOne(@Param('id') dto: GetArticleDto) {
-    return this.articleService.findOne(dto);
+  @Get('/:id')
+  findOne(@Param('id') id: string) {
+    return this.articleService.findOne(id);
   }
 
   @Post()

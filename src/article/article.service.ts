@@ -15,10 +15,10 @@ export class ArticleService {
     }
   }
 
-  async findOne(dto: GetArticleDto) {
+  async findOne(id: string) {
     try {
       const article = await this.prisma.article.findUnique({
-        where: { ArticleID: dto.articleId },
+        where: { ArticleID: id },
       });
       return article;
     } catch (error) {
