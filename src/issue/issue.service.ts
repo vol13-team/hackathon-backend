@@ -34,11 +34,8 @@ export class IssueService {
       throw error;
     }
   }
-  async create(
-    articleId: string,
-    issueDto: CreateIssueDto,
-    optionsDto: CreateOptionsDto,
-  ) {
+
+  async createOption(optionsDto: CreateOptionsDto) {
     try {
       const options = await this.prismaService.issueOptions.create({
         data: {
@@ -49,7 +46,17 @@ export class IssueService {
           CorrectOption: optionsDto.correctOption,
         },
       });
-      const optionId = options.OptionID;
+      return options;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async createIssue(
+    issueDto: CreateIssueDto,
+    articleId: string,
+    optionId: string,
+  ) {
+    try {
       const issue = await this.prismaService.issue.create({
         data: {
           IssueName: issueDto.IssueName,
@@ -61,7 +68,24 @@ export class IssueService {
           OptionsID: optionId,
         },
       });
-      return { issue, options };
+      return issue;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async create(
+    articleId: string,
+    issueDto: CreateIssueDto,
+    optionsDto: CreateOptionsDto,
+  ) {
+    try {
+      const options = await this.createOption(optionsDto);
+      const optionId = options.OptionID;
+      const issue = await this.createIssue(issueDto, articleId, optionId);
+      return {
+        options,
+        issue,
+      };
     } catch (error) {
       throw error;
     }
