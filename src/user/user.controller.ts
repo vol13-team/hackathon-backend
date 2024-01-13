@@ -1,5 +1,6 @@
 import { Controller, Post } from '@nestjs/common';
 import { UserService } from './user.service';
+import { CreateUserDto } from './dto';
 
 @Controller('user')
 export class UserController {
@@ -11,7 +12,7 @@ export class UserController {
   //   }
 
   @Post()
-  create() {
-    return this.userService.create();
+  create(dto: CreateUserDto) {
+    return this.userService.create(dto);
   }
 }
