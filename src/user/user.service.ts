@@ -20,4 +20,18 @@ export class UserService {
       throw error;
     }
   }
+  async update(id: string, dto: CreateUserDto) {
+    try {
+      const user = await this.prisma.user.update({
+        where: { UserID: id },
+        data: {
+          UserName: dto.userName,
+          token: dto.token,
+        },
+      });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
