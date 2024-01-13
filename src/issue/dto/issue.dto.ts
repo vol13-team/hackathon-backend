@@ -1,4 +1,5 @@
 export class CreateIssueDto {
+  IssueName: string;
   IssueDetail: string;
   Visibility: boolean;
   explanation: string;

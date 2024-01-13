@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateIssueDto, CreateOptionsDto } from './dto';
 
 @Injectable()
 export class IssueService {
@@ -33,26 +34,30 @@ export class IssueService {
       throw error;
     }
   }
-  async create(id: string, dto: any) {
+  async create(
+    id: string,
+    issueDto: CreateIssueDto,
+    optionsDto: CreateOptionsDto,
+  ) {
     try {
       const options = await this.prismaService.issueOptions.create({
         data: {
-          Option1: dto.option1,
-          Option2: dto.option2,
-          Option3: dto.option3,
-          Option4: dto.option4,
-          CorrectOption: dto.correctOption,
+          Option1: optionsDto.option1,
+          Option2: optionsDto.option2,
+          Option3: optionsDto.option3,
+          Option4: optionsDto.option4,
+          CorrectOption: optionsDto.correctOption,
         },
       });
       const optionId = options.OptionID;
       const issue = await this.prismaService.issue.create({
         data: {
-          IssueName: dto.IssueName,
-          IssueDetail: dto.IssueDetail,
-          Visibility: dto.Visibility,
-          explanation: dto.explanation,
-          ArticleID: dto.ArticleID,
-          PostUserID: dto.PostUserID,
+          IssueName: issueDto.IssueName,
+          IssueDetail: issueDto.IssueDetail,
+          Visibility: issueDto.Visibility,
+          explanation: issueDto.explanation,
+          ArticleID: issueDto.ArticleID,
+          PostUserID: issueDto.PostUserID,
           OptionsID: optionId,
         },
       });
