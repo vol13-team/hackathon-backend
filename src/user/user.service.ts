@@ -6,6 +6,24 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class UserService {
   constructor(private readonly prisma: PrismaService) {}
 
+  async findAll() {
+    try {
+      const users = await this.prisma.user.findMany();
+      return users;
+    } catch (error) {
+      throw error;
+    }
+  }
+  async findOne(id: string) {
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: { UserID: id },
+      });
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
   async create(dto: CreateUserDto) {
     try {
       const user = await this.prisma.user.create({
