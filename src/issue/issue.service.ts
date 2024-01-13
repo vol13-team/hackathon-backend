@@ -56,8 +56,7 @@ export class IssueService {
           IssueDetail: issueDto.IssueDetail,
           Visibility: issueDto.Visibility,
           explanation: issueDto.explanation,
-
-          PostUserID: issueDto.PostUserID, // todo User認証実装したらparamから取得するように変更する
+          PostUserID: issueDto.PostUserID,
           ArticleID: articleId,
           OptionsID: optionId,
         },

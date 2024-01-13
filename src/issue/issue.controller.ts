@@ -20,7 +20,7 @@ export class IssueController {
   @Post('/:articleId')
   create(
     @Param('articleId') articleId: string,
-    @Body('issue') issueDto: CreateIssueDto,
+    @Body('issues') issueDto: CreateIssueDto,
     @Body('options') optionsDto: CreateOptionsDto,
   ) {
     return this.issueService.create(articleId, issueDto, optionsDto);
