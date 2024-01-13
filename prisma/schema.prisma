@@ -8,10 +8,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 model User {
-  UserID String @id @default(uuid())
+  UserID String @id 
   UserName   String
+  token     String
   created_at DateTime  @default(now())
   Update_at  DateTime  @updatedAt
+
   Issue      Issue[]
   Answer     Answer[]
 }
