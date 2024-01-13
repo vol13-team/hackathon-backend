@@ -33,4 +33,32 @@ export class IssueService {
       throw error;
     }
   }
+  async create(id: string, dto: any) {
+    try {
+      const options = await this.prismaService.issueOptions.create({
+        data: {
+          Option1: dto.option1,
+          Option2: dto.option2,
+          Option3: dto.option3,
+          Option4: dto.option4,
+          CorrectOption: dto.correctOption,
+        },
+      });
+      const optionId = options.OptionID;
+      const issue = await this.prismaService.issue.create({
+        data: {
+          IssueName: dto.IssueName,
+          IssueDetail: dto.IssueDetail,
+          Visibility: dto.Visibility,
+          explanation: dto.explanation,
+          ArticleID: dto.ArticleID,
+          PostUserID: dto.PostUserID,
+          OptionsID: optionId,
+        },
+      });
+      return { issue, options };
+    } catch (error) {
+      throw error;
+    }
+  }
 }
