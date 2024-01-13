@@ -21,17 +21,17 @@ model User {
 model Issue {
   IssueID         String @id @default(uuid())
   IssueName        String
-  IsuueDetail      String
+  IssueDetail      String
   Visibility       Boolean
-  Options          IssueOptions @relation(fields: [OptionsID], references: [OptionID])
-  OptionsID        String
+  Options          IssueOptions? @relation(fields: [OptionsID], references: [OptionID])
+  OptionsID        String?
   PostUser         User       @relation(fields: [PostUserID], references: [UserID])
   PostUserID       String
-  IssueTagsID      String?
   explanation      String?
   created_at       DateTime  @default(now())
   Update_at        DateTime  @updatedAt
-  Article          Article?   @relation(fields: [IssueID], references: [ArticleID])
+  ArticleID         String?
+  Article           Article?   @relation(fields: [IssueID], references: [ArticleID])
   Answer           Answer[]
 }
 
