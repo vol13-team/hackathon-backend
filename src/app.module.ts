@@ -12,6 +12,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ArticleModule } from './article/article.module';
 import { TimesService } from './times/times.service';
 import { QiitaApiModule } from './qiita_api/qiita_api.module';
+import { IssueModule } from './issue/issue.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { QiitaApiModule } from './qiita_api/qiita_api.module';
     PrismaModule,
     ArticleModule,
     QiitaApiModule,
+    IssueModule,
   ],
   controllers: [AppController, AuthController, UserController],
   providers: [AppService, AuthService, UserService, TimesService],
