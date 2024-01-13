@@ -81,6 +81,9 @@ export class IssueService {
     try {
       const options = await this.createOption(optionsDto);
       const optionId = options.OptionID;
+      if (!optionId) {
+        throw new Error('option not found');
+      }
       const issue = await this.createIssue(issueDto, articleId, optionId);
       return {
         options,
