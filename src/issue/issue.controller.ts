@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { IssueService } from './issue.service';
+import { CreateIssueDto, CreateOptionsDto } from './dto';
 
 @Controller('issue')
 export class IssueController {
@@ -15,5 +16,13 @@ export class IssueController {
   @Get('issue/:id')
   findByIssue(@Param('id') id: string) {
     return this.issueService.findByIssue(id);
+  }
+  @Post('/:articleId')
+  create(
+    @Param('articleId') articleId: string,
+    @Body() issueDto: CreateIssueDto,
+    optionsDto: CreateOptionsDto,
+  ) {
+    return this.issueService.create(articleId, issueDto, optionsDto);
   }
 }
