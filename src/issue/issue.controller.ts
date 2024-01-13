@@ -9,6 +9,10 @@ export class IssueController {
     return this.issueService.findAll();
   }
   @Get('/:id')
+  findOne(@Param('id') id: string) {
+    return this.issueService.findOne(id);
+  }
+  @Get('issue/:id')
   findByIssue(@Param('id') id: string) {
     return this.issueService.findByIssue(id);
   }
