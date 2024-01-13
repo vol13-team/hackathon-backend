@@ -59,11 +59,11 @@ export class IssueService {
     try {
       const issue = await this.prismaService.issue.create({
         data: {
-          IssueName: issueDto.IssueName,
-          IssueDetail: issueDto.IssueDetail,
-          Visibility: issueDto.Visibility,
+          IssueName: issueDto.issueName,
+          IssueDetail: issueDto.issueDetail,
+          Visibility: issueDto.visibility,
           explanation: issueDto.explanation,
-          PostUserID: issueDto.PostUserID,
+          PostUserID: issueDto.postUserID,
           ArticleID: articleId,
           OptionsID: optionId,
         },

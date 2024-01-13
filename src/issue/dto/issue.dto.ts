@@ -3,19 +3,19 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class CreateIssueDto {
   @IsNotEmpty()
   @IsString()
-  IssueName: string;
+  issueName: string;
   @IsNotEmpty()
   @IsString()
-  IssueDetail: string;
+  issueDetail: string;
   @IsNotEmpty()
   @IsString()
-  Visibility: boolean;
+  visibility: boolean;
   @IsNotEmpty()
   @IsString()
   explanation: string;
   @IsNotEmpty()
   @IsString()
-  PostUserID: string;
+  postUserID: string;
 }
 export class CreateOptionsDto {
   @IsNotEmpty()
