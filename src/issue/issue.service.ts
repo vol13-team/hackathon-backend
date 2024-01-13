@@ -35,7 +35,7 @@ export class IssueService {
     }
   }
   async create(
-    id: string,
+    articleId: string,
     issueDto: CreateIssueDto,
     optionsDto: CreateOptionsDto,
   ) {
@@ -56,8 +56,9 @@ export class IssueService {
           IssueDetail: issueDto.IssueDetail,
           Visibility: issueDto.Visibility,
           explanation: issueDto.explanation,
-          ArticleID: issueDto.ArticleID,
-          PostUserID: issueDto.PostUserID,
+
+          PostUserID: issueDto.PostUserID, // todo User認証実装したらparamから取得するように変更する
+          ArticleID: articleId,
           OptionsID: optionId,
         },
       });
