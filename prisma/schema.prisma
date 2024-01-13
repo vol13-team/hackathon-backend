@@ -10,8 +10,10 @@ datasource db {
 model User {
   UserID String @id 
   UserName   String
+  token     String
   created_at DateTime  @default(now())
   Update_at  DateTime  @updatedAt
+
   Issue      Issue[]
   Answer     Answer[]
 }
