@@ -13,6 +13,16 @@ export class IssueService {
       throw error;
     }
   }
+  async findOne(id: string) {
+    try {
+      const issue = await this.prismaService.issue.findUnique({
+        where: { IssueID: id },
+      });
+      return issue;
+    } catch (error) {
+      throw error;
+    }
+  }
   async findByIssue(id: string) {
     try {
       const issue = await this.prismaService.issue.findUnique({
