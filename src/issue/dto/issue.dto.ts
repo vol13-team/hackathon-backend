@@ -3,7 +3,6 @@ export class CreateIssueDto {
   IssueDetail: string;
   Visibility: boolean;
   explanation: string;
-  ArticleID: string;
   PostUserID: string;
 }
 export class CreateOptionsDto {
