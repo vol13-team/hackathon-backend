@@ -17,18 +17,23 @@ export class CreateIssueDto {
   @IsNotEmpty()
   @IsString()
   option1: string;
+
   @IsNotEmpty()
   @IsString()
   option2: string;
+
   @IsNotEmpty()
   @IsString()
   option3: string;
+
   @IsNotEmpty()
   @IsString()
   option4: string;
+
   @IsNotEmpty()
   @IsString()
   correctOption: string;
+
   @IsNotEmpty()
   @IsString()
   postUserID: string;

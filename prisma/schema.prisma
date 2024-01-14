@@ -33,8 +33,8 @@ model Issue {
   explanation      String?
   created_at       DateTime  @default(now())
   Update_at        DateTime  @updatedAt
-  ArticleID         String?
-  Article           Article?   @relation(fields: [IssueID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade)
+  ArticleID         String
+  Article           Article   @relation(fields: [IssueID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade)
   Answer           Answer[]
 
 }
