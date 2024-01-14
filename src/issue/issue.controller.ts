@@ -22,6 +22,6 @@ export class IssueController {
     @Param('articleId') articleId: string,
     @Body() issueDto: CreateIssueDto,
   ) {
-    return this.issueService.create(articleId, issueDto);
+    return this.issueService.create(issueDto, articleId);
   }
 }
