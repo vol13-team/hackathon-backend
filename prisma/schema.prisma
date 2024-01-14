@@ -1,25 +1,25 @@
 
-generator client {
-  provider = "prisma-client-js"
-}
+  generator client {
+    provider = "prisma-client-js"
+  }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-model User {
-  UserID String @id 
-  UserName   String
-  token     String
-  created_at DateTime  @default(now())
-  Update_at  DateTime  @updatedAt
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
+  model User {
+    UserID String @id 
+    UserName   String
+    token     String
+    created_at DateTime  @default(now())
+    Update_at  DateTime  @updatedAt
 
-  Issue      Issue[]
-  Answer     Answer[]
-}
+    Issue      Issue[]
+    Answer     Answer[]
+  }
 
 model Issue {
-  IssueID         String @id @default(uuid())
+  IssueID          String @id @default(uuid())
   IssueName        String
   IssueDetail      String
   Visibility       Boolean
@@ -33,29 +33,28 @@ model Issue {
   explanation      String?
   created_at       DateTime  @default(now())
   Update_at        DateTime  @updatedAt
-  ArticleID         String
-  Article           Article   @relation(fields: [IssueID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade)
+  Article          Article     @relation(fields: [ArticleID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade) // 修正箇所
+  ArticleID        String
   Answer           Answer[]
-
 }
 
-model Article {
-  ArticleID  String @id @default(uuid())
-  ArticleTitle  String
-  ArticleLink  String
-  ArticleUserName  String
-  Issue       Issue?
-}
+  model Article {
+    ArticleID  String @id @default(uuid())
+    ArticleTitle  String
+    ArticleLink  String
+    ArticleUserName  String
+    Issue       Issue[]
+  }
 
-model Answer {
-  AnswerID      String @id @default(uuid())
-  Decision      Boolean
-  Issue         Issue    @relation(fields: [IssueID], references: [IssueID],onDelete: Cascade, onUpdate: Cascade)
-  IssueID       String
-  AnserUser     User     @relation(fields: [AnserUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
-  AnserUserID   String
-  selectOptionID String
-}
+  model Answer {
+    AnswerID      String @id @default(uuid())
+    Decision      Boolean
+    Issue         Issue    @relation(fields: [IssueID], references: [IssueID],onDelete: Cascade, onUpdate: Cascade)
+    IssueID       String
+    AnserUser     User     @relation(fields: [AnserUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
+    AnserUserID   String
+    selectOptionID String
+  }
 
 
 
