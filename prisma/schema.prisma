@@ -23,8 +23,11 @@ model Issue {
   IssueName        String
   IssueDetail      String
   Visibility       Boolean
-  Options          IssueOptions? @relation(fields: [OptionsID], references: [OptionID],onDelete: Cascade, onUpdate: Cascade)
-  OptionsID        String?
+  Option1          String
+  Option2          String
+  Option3          String
+  Option4          String
+  CorrectOption    String
   PostUser         User       @relation(fields: [PostUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
   PostUserID       String
   explanation      String?
@@ -33,6 +36,7 @@ model Issue {
   ArticleID         String?
   Article           Article?   @relation(fields: [IssueID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade)
   Answer           Answer[]
+
 }
 
 model Article {
@@ -50,18 +54,8 @@ model Answer {
   IssueID       String
   AnserUser     User     @relation(fields: [AnserUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
   AnserUserID   String
-  selectOption  IssueOptions @relation(fields: [selectOptionID], references: [OptionID],onDelete: Cascade, onUpdate: Cascade)
   selectOptionID String
 }
 
-model IssueOptions {
-  OptionID          String @id @default(uuid())
-  Option1          String
-  Option2          String
-  Option3          String
-  Option4          String
-  CorrectOption    String
-  Issue            Issue[]
-  selectedAnswers  Answer[]
-}
+
 
