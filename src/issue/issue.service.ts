@@ -41,15 +41,7 @@ export class IssueService {
     }
   }
 
-  async createIssue(issueDto: CreateIssueDto, articleId: string) {
-    const article = await this.articleService.findOne(articleId);
-    const user = await this.userService.findOne(issueDto.postUserID);
-    if (article == null) {
-      throw new Error('ArticleId is not valid');
-    }
-    if (user == null) {
-      throw new Error('UserId is not valid');
-    }
+  async createIssue(issueDto: CreateIssueDto, articleID: string) {
     const issue = await this.prismaService.issue.create({
       data: {
         IssueName: issueDto.issueName,
@@ -60,10 +52,8 @@ export class IssueService {
         Option3: issueDto.option3,
         Option4: issueDto.option4,
         CorrectOption: issueDto.correctOption,
-        ArticleID: article.ArticleID,
-        PostUser: {
-          connect: { UserID: user.UserID },
-        },
+        ArticleID: articleID,
+        PostUserID: issueDto.postUserID,
       },
     });
 

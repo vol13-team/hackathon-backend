@@ -38,6 +38,5 @@ export class CreateIssueDto {
   @IsString()
   postUserID: string;
 }
-export class CreateOptionsDto {}
 
 //http://localhost:3000/isue/df12fff7-4187-4084-b40e-5cd3a1f6b764
