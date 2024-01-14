@@ -41,9 +41,14 @@ export class IssueService {
     }
   }
 
-  async createIssue(issueDto: CreateIssueDto, articleID: string) {
+  async createIssue(issueDto: CreateIssueDto, articleId: string) {
     const issue = await this.prismaService.issue.create({
       data: {
+        PostUser: {
+          connect: {
+            UserID: issueDto.postUserID,
+          },
+        },
         IssueName: issueDto.issueName,
         IssueDetail: issueDto.issueDetail,
         Visibility: issueDto.visibility,
@@ -52,8 +57,12 @@ export class IssueService {
         Option3: issueDto.option3,
         Option4: issueDto.option4,
         CorrectOption: issueDto.correctOption,
-        ArticleID: articleID,
-        PostUserID: issueDto.postUserID,
+        Article: {
+          // ネストされた書き込みを追加
+          connect: {
+            ArticleID: articleId,
+          },
+        },
       },
     });
 
