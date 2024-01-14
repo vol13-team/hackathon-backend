@@ -1,4 +1,3 @@
 export class CreateAnswerDto {
-  issueId;
-  selectOption;
+  selectOption: string;
 }
