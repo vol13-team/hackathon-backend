@@ -15,5 +15,6 @@ export class AnswerService {
   //answer_idからanswerを取得
   //issueからcollectOption,explanationを取得
 
-  async verifying() {}
+  async create() {}
+  async getAns() {}
 }
