@@ -17,7 +17,7 @@ export class AnswerService {
   async finedAll() {
     return this.prismaService.answer.findMany();
   }
-  async findOne(answerId: string) {
+  async finedOne(answerId: string) {
     return this.prismaService.answer.findUnique({
       where: { AnswerID: answerId },
     });
