@@ -18,14 +18,14 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   // JWTのペイロードを検証し、リクエストのユーザー情報を提供する
-  async validate(payload: { sub: number; email: string }) {
+  async validate(payload: { sub: string; email: string }) {
     // ここでユーザー情報を検証し、リクエストのユーザー情報を返す
     const user = await this.prisma.user.findUnique({
       where: {
-        id: payload.sub,
+        UserID: payload.sub,
       },
     });
-    delete user.hash;
+
     if (!user) {
       throw new Error('ユーザーが見つかりませんでした');
     }
