@@ -1,67 +1,60 @@
 
-generator client {
-  provider = "prisma-client-js"
-}
+  generator client {
+    provider = "prisma-client-js"
+  }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-model User {
-  UserID String @id 
-  UserName   String
-  token     String
-  created_at DateTime  @default(now())
-  Update_at  DateTime  @updatedAt
+  datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+  }
+  model User {
+    UserID String @id 
+    UserName   String
+    token     String
+    created_at DateTime  @default(now())
+    Update_at  DateTime  @updatedAt
 
-  Issue      Issue[]
-  Answer     Answer[]
-}
+    Issue      Issue[]
+    Answer     Answer[]
+  }
 
 model Issue {
-  IssueID         String @id @default(uuid())
+  IssueID          String @id @default(uuid())
   IssueName        String
   IssueDetail      String
   Visibility       Boolean
-  Options          IssueOptions? @relation(fields: [OptionsID], references: [OptionID],onDelete: Cascade, onUpdate: Cascade)
-  OptionsID        String?
-  PostUser         User       @relation(fields: [PostUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
-  PostUserID       String
-  explanation      String?
-  created_at       DateTime  @default(now())
-  Update_at        DateTime  @updatedAt
-  ArticleID         String?
-  Article           Article?   @relation(fields: [IssueID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade)
-  Answer           Answer[]
-}
-
-model Article {
-  ArticleID  String @id @default(uuid())
-  ArticleTitle  String
-  ArticleLink  String
-  ArticleUserName  String
-  Issue       Issue?
-}
-
-model Answer {
-  AnswerID      String @id @default(uuid())
-  Decision      Boolean
-  Issue         Issue    @relation(fields: [IssueID], references: [IssueID],onDelete: Cascade, onUpdate: Cascade)
-  IssueID       String
-  AnserUser     User     @relation(fields: [AnserUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
-  AnserUserID   String
-  selectOption  IssueOptions @relation(fields: [selectOptionID], references: [OptionID],onDelete: Cascade, onUpdate: Cascade)
-  selectOptionID String
-}
-
-model IssueOptions {
-  OptionID          String @id @default(uuid())
   Option1          String
   Option2          String
   Option3          String
   Option4          String
   CorrectOption    String
-  Issue            Issue[]
-  selectedAnswers  Answer[]
+  PostUser         User       @relation(fields: [PostUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
+  PostUserID       String
+  explanation      String?
+  created_at       DateTime  @default(now())
+  Update_at        DateTime  @updatedAt
+  Article          Article     @relation(fields: [ArticleID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade) // 修正箇所
+  ArticleID        String
+  Answer           Answer[]
 }
+
+  model Article {
+    ArticleID  String @id @default(uuid())
+    ArticleTitle  String
+    ArticleLink  String
+    ArticleUserName  String
+    Issue       Issue[]
+  }
+
+  model Answer {
+    AnswerID      String @id @default(uuid())
+    Decision      Boolean
+    Issue         Issue    @relation(fields: [IssueID], references: [IssueID],onDelete: Cascade, onUpdate: Cascade)
+    IssueID       String
+    AnserUser     User     @relation(fields: [AnserUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
+    AnserUserID   String
+    selectOptionID String
+  }
+
+
 

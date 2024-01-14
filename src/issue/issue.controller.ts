@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { IssueService } from './issue.service';
-import { CreateIssueDto, CreateOptionsDto } from './dto';
+import { CreateIssueDto } from './dto';
 
 @Controller('issue')
 export class IssueController {
@@ -20,9 +20,8 @@ export class IssueController {
   @Post('/:articleId')
   create(
     @Param('articleId') articleId: string,
-    @Body('issues') issueDto: CreateIssueDto,
-    @Body('options') optionsDto: CreateOptionsDto,
+    @Body() issueDto: CreateIssueDto,
   ) {
-    return this.issueService.create(articleId, issueDto, optionsDto);
+    return this.issueService.createIssue(issueDto, articleId);
   }
 }
