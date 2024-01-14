@@ -13,6 +13,7 @@ import { ArticleModule } from './article/article.module';
 import { TimesService } from './times/times.service';
 import { QiitaApiModule } from './qiita_api/qiita_api.module';
 import { IssueModule } from './issue/issue.module';
+import { AnswerModule } from './answer/answer.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { IssueModule } from './issue/issue.module';
     ArticleModule,
     QiitaApiModule,
     IssueModule,
+    AnswerModule,
   ],
   controllers: [AppController, AuthController, UserController],
   providers: [AppService, AuthService, UserService, TimesService],
