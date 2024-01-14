@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
-
+import { CreateAnswerDto } from './dto';
 @Injectable()
 export class AnswerService {
   constructor(private readonly prismaService: PrismaService) {}
@@ -15,6 +15,8 @@ export class AnswerService {
   //answer_idからanswerを取得
   //issueからcollectOption,explanationを取得
 
-  async create() {}
+  async create(dto: CreateAnswerDto, issueId: string) {
+    console.log(dto, issueId);
+  }
   async getAns() {}
 }

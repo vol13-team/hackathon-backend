@@ -1,12 +1,14 @@
-import { Controller, Post } from '@nestjs/common';
+import { Body, Controller, Param, Post } from '@nestjs/common';
 import { AnswerService } from './answer.service';
+import { CreateAnswerDto } from './dto';
 
 @Controller('answer')
 export class AnswerController {
   constructor(private readonly answerService: AnswerService) {}
 
-  @Post()
-  async verifying() {
-    // return this.answerService.create();
+  @Post('/:issue_id')
+  async create(@Param('/:id') issueId: string, @Body() dto: CreateAnswerDto) {
+    console.log(dto);
+    return this.answerService.create(dto, issueId);
   }
 }
