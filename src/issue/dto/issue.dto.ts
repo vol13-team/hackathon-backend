@@ -13,14 +13,7 @@ export class CreateIssueDto {
   @IsNotEmpty()
   @IsString()
   explanation: string;
-  @IsNotEmpty()
-  @IsString()
-  postUserID: string;
-}
-export class CreateOptionsDto {
-  @IsNotEmpty()
-  @IsString()
-  IssueID: string;
+
   @IsNotEmpty()
   @IsString()
   option1: string;
@@ -36,6 +29,10 @@ export class CreateOptionsDto {
   @IsNotEmpty()
   @IsString()
   correctOption: string;
+  @IsNotEmpty()
+  @IsString()
+  postUserID: string;
 }
+export class CreateOptionsDto {}
 
 //http://localhost:3000/isue/df12fff7-4187-4084-b40e-5cd3a1f6b764
