@@ -18,7 +18,7 @@ export class ArticleService {
   async findOne(id: string) {
     try {
       const article = await this.prisma.article.findUnique({
-        where: { ArticleID: id },
+        where: { article_id: id },
       });
       return article;
     } catch (error) {
@@ -29,9 +29,9 @@ export class ArticleService {
     try {
       const article = await this.prisma.article.create({
         data: {
-          ArticleTitle: dto.articleTitle,
-          ArticleLink: dto.articleLink,
-          ArticleUserName: dto.articleUserName,
+          article_title: dto.articleTitle,
+          article_link: dto.articleLink,
+          article_user_name: dto.articleUserName,
         },
       });
       return article;
@@ -42,11 +42,11 @@ export class ArticleService {
   async update(id: string, dto: UpdateArticleDto) {
     try {
       const article = await this.prisma.article.update({
-        where: { ArticleID: id },
+        where: { article_id: id },
         data: {
-          ArticleTitle: dto.articleTitle,
-          ArticleLink: dto.articleLink,
-          ArticleUserName: dto.articleUserName,
+          article_title: dto.articleTitle,
+          article_link: dto.articleLink,
+          article_user_name: dto.articleUserName,
         },
       });
       return article;
@@ -57,7 +57,7 @@ export class ArticleService {
   async delete(id: string) {
     try {
       const article = await this.prisma.article.delete({
-        where: { ArticleID: id },
+        where: { article_id: id },
       });
       return article;
     } catch (error) {
