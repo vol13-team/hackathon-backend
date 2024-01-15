@@ -19,13 +19,13 @@ export class AnswerService {
   }
   async finedByAnswerID(answerId: string) {
     return this.prismaService.answer.findUnique({
-      where: { AnswerID: answerId },
+      where: { answer_id: answerId },
     });
   }
 
   async finedByIssueID(issueId: string) {
     return this.prismaService.answer.findMany({
-      where: { IssueID: issueId },
+      where: { issue_id: issueId },
     });
   }
 
