@@ -9,17 +9,14 @@ export class IssueController {
   findAll() {
     return this.issueService.findAll();
   }
-  @Get('/:id')
-  findOne(@Param('id') id: string) {
-    return this.issueService.findOne(id);
-  }
-  @Get('issue/:id')
+
+  @Get('/:issue_id')
   findByIssue(@Param('id') id: string) {
     return this.issueService.findByIssue(id);
   }
-  @Post('/:articleId')
+  @Post('/:article_id')
   create(
-    @Param('articleId') articleId: string,
+    @Param('article_id') articleId: string,
     @Body() issueDto: CreateIssueDto,
   ) {
     return this.issueService.createIssue(issueDto, articleId);
