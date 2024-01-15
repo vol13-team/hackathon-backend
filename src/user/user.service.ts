@@ -14,10 +14,10 @@ export class UserService {
       throw error;
     }
   }
-  async findOne(id: string) {
+  async findOne(user_id: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { UserID: id },
+        where: { UserID: user_id },
       });
       return user;
     } catch (error) {
@@ -38,10 +38,10 @@ export class UserService {
       throw error;
     }
   }
-  async update(id: string, dto: UpdateUserDto) {
+  async update(user_id: string, dto: UpdateUserDto) {
     try {
       const user = await this.prisma.user.update({
-        where: { UserID: id },
+        where: { UserID: user_id },
         data: {
           UserName: dto.user_name,
           token: dto.token,
