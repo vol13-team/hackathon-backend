@@ -37,17 +37,17 @@ export class IssueService {
       data: {
         PostUser: {
           connect: {
-            UserID: issueDto.postUserID,
+            UserID: issueDto.post_user_id,
           },
         },
-        IssueName: issueDto.issueName,
+        IssueName: issueDto.issue_name,
         IssueDetail: issueDto.issueDetail,
         Visibility: issueDto.visibility,
         Option1: issueDto.option1,
         Option2: issueDto.option2,
         Option3: issueDto.option3,
         Option4: issueDto.option4,
-        CorrectOption: issueDto.correctOption,
+        CorrectOption: issueDto.correct_option,
         Article: {
           // ネストされた書き込みを追加
           connect: {

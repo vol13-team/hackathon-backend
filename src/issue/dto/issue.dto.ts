@@ -3,7 +3,7 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class CreateIssueDto {
   @IsNotEmpty()
   @IsString()
-  issueName: string;
+  issue_name: string;
   @IsNotEmpty()
   @IsString()
   issueDetail: string;
@@ -32,11 +32,11 @@ export class CreateIssueDto {
 
   @IsNotEmpty()
   @IsString()
-  correctOption: string;
+  correct_option: string;
 
   @IsNotEmpty()
   @IsString()
-  postUserID: string;
+  post_user_id: string;
 }
 
 //http://localhost:3000/isue/df12fff7-4187-4084-b40e-5cd3a1f6b764
