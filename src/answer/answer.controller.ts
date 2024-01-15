@@ -12,8 +12,12 @@ export class AnswerController {
   }
 
   @Get('/:id')
-  async findOne(@Param('id') answerId: string) {
-    return this.answerService.finedOne(answerId);
+  async finedByAnswerID(@Param('id') answerId: string) {
+    return this.answerService.finedByAnswerID(answerId);
+  }
+  @Get('/issue_id')
+  async finedByIssueID(@Param('id') issueId: string) {
+    return this.answerService.finedByIssueID(issueId);
   }
 
   @Post('/:issue_id')

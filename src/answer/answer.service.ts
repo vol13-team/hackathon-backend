@@ -17,11 +17,18 @@ export class AnswerService {
   async finedAll() {
     return this.prismaService.answer.findMany();
   }
-  async finedOne(answerId: string) {
+  async finedByAnswerID(answerId: string) {
     return this.prismaService.answer.findUnique({
       where: { AnswerID: answerId },
     });
   }
+
+  async finedByIssueID(issueId: string) {
+    return this.prismaService.answer.findMany({
+      where: { IssueID: issueId },
+    });
+  }
+
   async create(dto: CreateAnswerDto, issueId: string) {
     console.log(dto, issueId);
   }
