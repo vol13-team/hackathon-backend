@@ -3,11 +3,11 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
-  userId: string;
+  user_id: string;
 
   @IsString()
   @IsNotEmpty()
-  userName: string;
+  user_name: string;
 
   @IsString()
   @IsNotEmpty()
@@ -17,7 +17,7 @@ export class CreateUserDto {
 export class UpdateUserDto {
   @IsString()
   @IsNotEmpty()
-  userName: string;
+  user_name: string;
 
   @IsString()
   @IsNotEmpty()

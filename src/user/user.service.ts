@@ -28,8 +28,8 @@ export class UserService {
     try {
       const user = await this.prisma.user.create({
         data: {
-          UserID: dto.userId,
-          UserName: dto.userName,
+          UserID: dto.user_id,
+          UserName: dto.user_name,
           token: dto.token,
         },
       });
@@ -43,7 +43,7 @@ export class UserService {
       const user = await this.prisma.user.update({
         where: { UserID: id },
         data: {
-          UserName: dto.userName,
+          UserName: dto.user_name,
           token: dto.token,
         },
       });
