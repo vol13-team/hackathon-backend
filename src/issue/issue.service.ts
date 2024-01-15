@@ -20,20 +20,11 @@ export class IssueService {
       throw error;
     }
   }
-  async findOne(id: string) {
+
+  async findByIssue(issue_id: string) {
     try {
       const issue = await this.prismaService.issue.findUnique({
-        where: { IssueID: id },
-      });
-      return issue;
-    } catch (error) {
-      throw error;
-    }
-  }
-  async findByIssue(id: string) {
-    try {
-      const issue = await this.prismaService.issue.findUnique({
-        where: { IssueID: id },
+        where: { IssueID: issue_id },
       });
       return issue;
     } catch (error) {
@@ -41,7 +32,7 @@ export class IssueService {
     }
   }
 
-  async createIssue(issueDto: CreateIssueDto, articleId: string) {
+  async createIssue(issueDto: CreateIssueDto, article_id: string) {
     const issue = await this.prismaService.issue.create({
       data: {
         PostUser: {
@@ -60,7 +51,7 @@ export class IssueService {
         Article: {
           // ネストされた書き込みを追加
           connect: {
-            ArticleID: articleId,
+            ArticleID: article_id,
           },
         },
       },
