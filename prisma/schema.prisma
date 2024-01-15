@@ -7,54 +7,51 @@
     provider = "postgresql"
     url      = env("DATABASE_URL")
   }
-  model User {
-    UserID String @id 
-    UserName   String
-    token     String
-    created_at DateTime  @default(now())
-    Update_at  DateTime  @updatedAt
+model User {
+  user_id String @id 
+  user_name   String
+  token     String
+  created_at DateTime  @default(now())
+  update_at  DateTime  @updatedAt
 
-    Issue      Issue[]
-    Answer     Answer[]
-  }
-
-model Issue {
-  IssueID          String @id @default(uuid())
-  IssueName        String
-  IssueDetail      String
-  Visibility       Boolean
-  Option1          String
-  Option2          String
-  Option3          String
-  Option4          String
-  CorrectOption    String
-  PostUser         User       @relation(fields: [PostUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
-  PostUserID       String
-  explanation      String?
-  created_at       DateTime  @default(now())
-  Update_at        DateTime  @updatedAt
-  Article          Article     @relation(fields: [ArticleID], references: [ArticleID],onDelete: Cascade, onUpdate: Cascade) // 修正箇所
-  ArticleID        String
-  Answer           Answer[]
+  issue      Issue[]
+  answer     Answer[]
 }
 
-  model Article {
-    ArticleID  String @id @default(uuid())
-    ArticleTitle  String
-    ArticleLink  String
-    ArticleUserName  String
-    Issue       Issue[]
-  }
+model Issue {
+  issue_id          String @id @default(uuid())
+  issue_name        String
+  issue_detail      String
+  visibility       Boolean
+  option1          String
+  option2          String
+  option3          String
+  option4          String
+  correct_option    String
+  post_user         User       @relation(fields: [post_user_id], references: [user_id],onDelete: Cascade, onUpdate: Cascade)
+  post_user_id       String
+  explanation      String?
+  created_at       DateTime  @default(now())
+  update_at        DateTime  @updatedAt
+  article          Article     @relation(fields: [article_id], references: [article_id],onDelete: Cascade, onUpdate: Cascade) // 修正箇所
+  article_id        String
+  answer           Answer[]
+}
 
-  model Answer {
-    AnswerID      String @id @default(uuid())
-    Decision      Boolean
-    Issue         Issue    @relation(fields: [IssueID], references: [IssueID],onDelete: Cascade, onUpdate: Cascade)
-    IssueID       String
-    AnserUser     User     @relation(fields: [AnserUserID], references: [UserID],onDelete: Cascade, onUpdate: Cascade)
-    AnserUserID   String
-    selectOptionID String
-  }
+model Article {
+  article_id  String @id @default(uuid())
+  article_title  String
+  article_link  String
+  article_user_name  String
+  issue       Issue[]
+}
 
-
-
+model Answer {
+  answer_id      String @id @default(uuid())
+  decision      Boolean
+  issue         Issue    @relation(fields: [issue_id], references: [issue_id],onDelete: Cascade, onUpdate: Cascade)
+  issue_id       String
+  answer_user     User     @relation(fields: [answer_user_id], references: [user_id],onDelete: Cascade, onUpdate: Cascade)
+  answer_user_id   String
+  select_option_id String
+}
