@@ -14,10 +14,10 @@ export class UserService {
       throw error;
     }
   }
-  async findOne(id: string) {
+  async findOne(user_id: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { UserID: id },
+        where: { UserID: user_id },
       });
       return user;
     } catch (error) {
@@ -28,8 +28,8 @@ export class UserService {
     try {
       const user = await this.prisma.user.create({
         data: {
-          UserID: dto.userId,
-          UserName: dto.userName,
+          UserID: dto.user_id,
+          UserName: dto.user_name,
           token: dto.token,
         },
       });
@@ -38,12 +38,12 @@ export class UserService {
       throw error;
     }
   }
-  async update(id: string, dto: UpdateUserDto) {
+  async update(user_id: string, dto: UpdateUserDto) {
     try {
       const user = await this.prisma.user.update({
-        where: { UserID: id },
+        where: { UserID: user_id },
         data: {
-          UserName: dto.userName,
+          UserName: dto.user_name,
           token: dto.token,
         },
       });
@@ -52,10 +52,10 @@ export class UserService {
       throw error;
     }
   }
-  async delete(id: string) {
+  async delete(user_id: string) {
     try {
       const user = await this.prisma.user.delete({
-        where: { UserID: id },
+        where: { UserID: user_id },
       });
       return user;
     } catch (error) {

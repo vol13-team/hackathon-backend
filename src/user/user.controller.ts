@@ -19,20 +19,20 @@ export class UserController {
     return this.userService.findAll();
   }
   @Get('/:id')
-  findOne(@Param('id') id: string) {
-    return this.userService.findOne(id);
+  findOne(@Param('user_id') user_id: string) {
+    return this.userService.findOne(user_id);
   }
 
   @Post()
   create(@Body() dto: CreateUserDto) {
     return this.userService.create(dto);
   }
-  @Put('/:id')
-  update(@Param('id') id: string, @Body() dto: CreateUserDto) {
-    return this.userService.update(id, dto);
+  @Put('/:user_id')
+  update(@Param('user_id') user_id: string, @Body() dto: CreateUserDto) {
+    return this.userService.update(user_id, dto);
   }
-  @Delete('/:id')
-  delete(@Param('id') id: string) {
-    return this.userService.delete(id);
+  @Delete('/:user_id')
+  delete(@Param('user_id') user_id: string) {
+    return this.userService.delete(user_id);
   }
 }
