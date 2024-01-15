@@ -52,10 +52,10 @@ export class UserService {
       throw error;
     }
   }
-  async delete(id: string) {
+  async delete(user_id: string) {
     try {
       const user = await this.prisma.user.delete({
-        where: { UserID: id },
+        where: { UserID: user_id },
       });
       return user;
     } catch (error) {
