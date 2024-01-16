@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Update,
+  Delete,
+  Get,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { IssueService } from './issue.service';
 import { CreateIssueDto } from './dto';
 
@@ -20,5 +28,14 @@ export class IssueController {
     @Body() issueDto: CreateIssueDto,
   ) {
     return this.issueService.createIssue(issueDto, article_id);
+  }
+
+  // アップデートのエンドポイントを追加
+  @Post('/update/:issue_id')
+  update(
+    @Param('issue_id') issue_id: string,
+    @Body() updateDto: CreateIssueDto,
+  ) {
+    return this.issueService.updateIssue(updateDto, issue_id);
   }
 }
