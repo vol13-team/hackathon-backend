@@ -18,7 +18,7 @@ export class UserController {
   findAll() {
     return this.userService.findAll();
   }
-  @Get('/:id')
+  @Get('/:user_id')
   findOne(@Param('user_id') user_id: string) {
     return this.userService.findOne(user_id);
   }

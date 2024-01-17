@@ -8,9 +8,9 @@
     url      = env("DATABASE_URL")
   }
 model User {
-  user_id String @id 
+  user_id    String @id 
   user_name   String
-  token     String
+  email     String  
   created_at DateTime  @default(now())
   update_at  DateTime  @updatedAt
 
