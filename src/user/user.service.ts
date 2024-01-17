@@ -30,7 +30,7 @@ export class UserService {
         data: {
           user_id: dto.user_id,
           user_name: dto.user_name,
-          token: dto.token,
+          email: dto.email,
         },
       });
       return user;
@@ -44,7 +44,7 @@ export class UserService {
         where: { user_id: user_id },
         data: {
           user_name: dto.user_name,
-          token: dto.token,
+          email: dto.email,
         },
       });
       return user;
