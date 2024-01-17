@@ -11,16 +11,18 @@ export class AnswerController {
     return this.answerService.finedAll();
   }
 
+
   @Get('/:answer_id')
   async finedByAnswerID(@Param('answer_id') answerId: string) {
     return this.answerService.finedByAnswerID(answerId);
   }
+  @Get('/issue_id')
+  async finedByIssueID(@Param('id') issueId: string) {
+    return this.answerService.finedByIssueID(issueId);
+  }
 
   @Post('/:issue_id')
-  async create(
-    @Param('/:issue_id') issueId: string,
-    @Body() dto: CreateAnswerDto,
-  ) {
+  async create(@Param('/:id') issueId: string, @Body() dto: CreateAnswerDto) {
     console.log(dto);
     return this.answerService.create(dto, issueId);
   }

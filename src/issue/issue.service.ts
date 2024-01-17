@@ -1,10 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateIssueDto } from './dto';
+import { UserService } from 'src/user/user.service';
+import { ArticleService } from 'src/article/article.service';
 
 @Injectable()
 export class IssueService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly articleService: ArticleService,
+    private readonly userService: UserService,
+  ) {}
 
   // 全部のissueを取得
   async findAll() {
@@ -17,7 +23,7 @@ export class IssueService {
   }
 
   // 記事に紐づくissueを取得
-  async findByIssueID(issue_id: string) {
+  async findByIssue(issue_id: string) {
     try {
       const issue = await this.prismaService.issue.findUnique({
         where: { issue_id: issue_id },
@@ -67,8 +73,9 @@ export class IssueService {
         option3: issueDto.option3,
         option4: issueDto.option4,
         correct_option: issueDto.correct_option,
+        // 更新日を記載
+        // update_at: issueDto.update_at,
         article: {
-          // ネストされた書き込みを追加
           connect: {
             article_id: issueDto.article_id,
           },
@@ -76,5 +83,12 @@ export class IssueService {
       },
     });
     return update_issue;
+  }
+  // 記事に紐づくissueを削除
+  async deleteIssue(issue_id: string) {
+    const delete_issue = await this.prismaService.issue.delete({
+      where: { issue_id: issue_id },
+    });
+    return delete_issue;
   }
 }

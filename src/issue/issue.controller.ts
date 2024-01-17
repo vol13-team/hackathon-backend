@@ -12,7 +12,7 @@ export class IssueController {
 
   @Get('/:issue_id')
   findByIssue(@Param('issue_id') issue_id_: string) {
-    return this.issueService.findByIssueID(issue_id_);
+    return this.issueService.findByIssue(issue_id_);
   }
   @Post('/:article_id')
   create(
@@ -29,5 +29,11 @@ export class IssueController {
     @Body() updateDto: CreateIssueDto,
   ) {
     return this.issueService.updateIssue(updateDto, issue_id);
+  }
+
+  // 削除のエンドポイントを追加
+  @Post('/delete/:issue_id')
+  delete(@Param('issue_id') issue_id: string) {
+    return this.issueService.deleteIssue(issue_id);
   }
 }

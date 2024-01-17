@@ -14,7 +14,6 @@ import { TimesService } from './times/times.service';
 import { QiitaApiModule } from './qiita_api/qiita_api.module';
 import { IssueModule } from './issue/issue.module';
 import { AnswerModule } from './answer/answer.module';
-import { JwtService } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -32,6 +31,6 @@ import { JwtService } from '@nestjs/jwt';
     AnswerModule,
   ],
   controllers: [AppController, AuthController, UserController],
-  providers: [AppService, AuthService, UserService, TimesService, JwtService],
+  providers: [AppService, AuthService, UserService, TimesService],
 })
 export class AppModule {}

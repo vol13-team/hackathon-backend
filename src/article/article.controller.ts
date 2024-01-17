@@ -19,24 +19,21 @@ export class ArticleController {
     return this.articleService.findAll();
   }
 
-  @Get('/:article_id')
-  findOne(@Param('article_id') article_id: string) {
-    return this.articleService.findOne(article_id);
+  @Get('/:id')
+  findOne(@Param('id') id: string) {
+    return this.articleService.findOne(id);
   }
 
   @Post()
   create(@Body() dto: CreateArticleDto) {
     return this.articleService.create(dto);
   }
-  @Put('/:article_id')
-  update(
-    @Param('article_id') article_id: string,
-    @Body() dto: CreateArticleDto,
-  ) {
-    return this.articleService.update(article_id, dto);
+  @Put('/:id')
+  update(@Param('id') id: string, @Body() dto: CreateArticleDto) {
+    return this.articleService.update(id, dto);
   }
-  @Delete('/:article_id')
-  delete(@Param('article_id') article_id: string) {
-    return this.articleService.delete(article_id);
+  @Delete('/:id')
+  delete(@Param('id') id: string) {
+    return this.articleService.delete(id);
   }
 }

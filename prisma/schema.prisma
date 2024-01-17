@@ -10,9 +10,10 @@
 model User {
   user_id String @id 
   user_name   String
-  email     String
+  token     String
   created_at DateTime  @default(now())
   update_at  DateTime  @updatedAt
+
   issue      Issue[]
   answer     Answer[]
 }
@@ -52,5 +53,5 @@ model Answer {
   issue_id       String
   answer_user     User     @relation(fields: [answer_user_id], references: [user_id],onDelete: Cascade, onUpdate: Cascade)
   answer_user_id   String
-  select_option   String
+  select_option_id String
 }
