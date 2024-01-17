@@ -19,7 +19,7 @@ export class UpdateUserDto {
   @IsNotEmpty()
   user_name: string;
 
-  @IsString()
+  @IsEmail()
   @IsNotEmpty()
-  token: string;
+  email: string;
 }
