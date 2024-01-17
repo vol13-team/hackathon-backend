@@ -53,11 +53,11 @@ export class AnswerService {
     const issue = await this.issueService.findByIssueID(answer.issue_id);
     const selectOption = await answer.select_option; //選択した選択肢
     const collectOption = issue.correct_option;
+
+    //選択した選択肢と正解の選択肢が一致しているならtrue
     if (selectOption === collectOption) {
       return true;
     }
     return false;
-
-    //問題の正解
   }
 }
