@@ -50,7 +50,7 @@ export class AnswerService {
 
   async answerVerifying(answer_id: string) {
     const answer = await this.finedByAnswerID(answer_id);
-    const issue = await this.issueService.findByIssue(answer.issue_id);
+    const issue = await this.issueService.findByIssueID(answer.issue_id);
     const selectOption = await answer.select_option; //選択した選択肢
     const collectOption = issue.correct_option;
     if (selectOption === collectOption) {
