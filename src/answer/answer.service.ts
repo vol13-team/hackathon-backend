@@ -1,9 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateAnswerDto } from './dto';
+import { IssueService } from 'src/issue/issue.service';
 @Injectable()
 export class AnswerService {
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(
+    private readonly prismaService: PrismaService,
+    private readonly issueService: IssueService,
+  ) {}
   //create verifying
   //issue id,select optionを受け取る
   //issue idからissue_collectionを取得
@@ -20,12 +24,6 @@ export class AnswerService {
   async finedByAnswerID(answerId: string) {
     return this.prismaService.answer.findUnique({
       where: { answer_id: answerId },
-    });
-  }
-
-  async finedByIssueID(issueId: string) {
-    return this.prismaService.answer.findMany({
-      where: { issue_id: issueId },
     });
   }
 
@@ -48,5 +46,18 @@ export class AnswerService {
       },
     });
     return answer;
+  }
+
+  async answerVerifying(answer_id: string) {
+    const answer = await this.finedByAnswerID(answer_id);
+    const issue = await this.finedByIssueID(answer.issue_id); //問題
+    const selectOption = await answer.select_option; //選択した選択肢
+    const collectOption = issue.correct_option;
+    if (selectOption === collectOption) {
+      return true;
+    }
+    return false;
+
+    //問題の正解
   }
 }
