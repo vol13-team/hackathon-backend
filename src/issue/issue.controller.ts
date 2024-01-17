@@ -12,7 +12,7 @@ export class IssueController {
 
   @Get('/:issue_id')
   findByIssue(@Param('issue_id') issue_id_: string) {
-    return this.issueService.findByIssue(issue_id_);
+    return this.issueService.findByIssueID(issue_id_);
   }
   @Post('/:article_id')
   create(
