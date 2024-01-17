@@ -54,10 +54,10 @@ export class ArticleService {
       throw error;
     }
   }
-  async delete(id: string) {
+  async delete(article_id: string) {
     try {
       const article = await this.prisma.article.delete({
-        where: { article_id: id },
+        where: { article_id: article_id },
       });
       return article;
     } catch (error) {
