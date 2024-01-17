@@ -25,9 +25,3 @@ export class UpdateArticleDto {
   @IsString()
   articleUserName: string;
 }
-
-export class DelateArticleDto {
-  @IsString()
-  @IsNotEmpty()
-  articleID: string;
-}
