@@ -37,6 +37,10 @@ export class CreateIssueDto {
   @IsNotEmpty()
   @IsString()
   post_user_id: string;
+
+  @IsNotEmpty()
+  @IsString()
+  article_id: string;
 }
 
 //http://localhost:3000/isue/df12fff7-4187-4084-b40e-5cd3a1f6b764

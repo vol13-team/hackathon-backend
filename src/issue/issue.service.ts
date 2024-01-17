@@ -72,6 +72,12 @@ export class IssueService {
         option3: issueDto.option3,
         option4: issueDto.option4,
         correct_option: issueDto.correct_option,
+        article: {
+          // ネストされた書き込みを追加
+          connect: {
+            article_id: issueDto.article_id,
+          },
+        },
       },
     });
   }
