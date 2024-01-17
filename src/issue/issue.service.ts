@@ -17,7 +17,7 @@ export class IssueService {
   }
 
   // 記事に紐づくissueを取得
-  async findByIssue(issue_id: string) {
+  async findByIssueID(issue_id: string) {
     try {
       const issue = await this.prismaService.issue.findUnique({
         where: { issue_id: issue_id },
