@@ -59,6 +59,7 @@ export class IssueService {
         },
       },
     });
+    return issue;
   }
   async updateIssue(issueDto: CreateIssueDto, issue_id: string) {
     const update_issue = await this.prismaService.issue.update({
@@ -73,7 +74,7 @@ export class IssueService {
         option4: issueDto.option4,
         correct_option: issueDto.correct_option,
         // 更新日を記載
-        update_at: issueDto.update_at,
+        // update_at: issueDto.update_at,
         article: {
           connect: {
             article_id: issueDto.article_id,
@@ -81,11 +82,13 @@ export class IssueService {
         },
       },
     });
+    return update_issue;
   }
   // 記事に紐づくissueを削除
   async deleteIssue(issue_id: string) {
     const delete_issue = await this.prismaService.issue.delete({
       where: { issue_id: issue_id },
     });
+    return delete_issue;
   }
 }
