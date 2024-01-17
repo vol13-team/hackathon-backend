@@ -73,12 +73,17 @@ export class IssueService {
         option4: issueDto.option4,
         correct_option: issueDto.correct_option,
         article: {
-          // ネストされた書き込みを追加
           connect: {
-            article_id: issueDto.article_id,
+            article_id: issue_id,
           },
         },
       },
+    });
+  }
+  async deleteIssue(issue_id: string) {
+    const delete_issue = await this.prismaService.issue.delete({
+      where: { issue_id: issue_id },
+      data: {},
     });
   }
 }
