@@ -72,18 +72,20 @@ export class IssueService {
         option3: issueDto.option3,
         option4: issueDto.option4,
         correct_option: issueDto.correct_option,
+        // 更新日を記載
+        update_at: issueDto.update_at,
         article: {
           connect: {
-            article_id: issue_id,
+            article_id: issueDto.article_id,
           },
         },
       },
     });
   }
+  // 記事に紐づくissueを削除
   async deleteIssue(issue_id: string) {
     const delete_issue = await this.prismaService.issue.delete({
       where: { issue_id: issue_id },
-      data: {},
     });
   }
 }

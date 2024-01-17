@@ -30,4 +30,9 @@ export class IssueController {
   ) {
     return this.issueService.updateIssue(updateDto, issue_id);
   }
+
+  @Post('/delete/:issue_id')
+  delete(@Param('issue_id') issue_id: string) {
+    return this.issueService.deleteIssue(issue_id);
+  }
 }
