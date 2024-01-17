@@ -11,7 +11,7 @@ export class AnswerController {
     return this.answerService.finedAll();
   }
 
-  @Get('/:id')
+  @Get('/:answer_id')
   async finedByAnswerID(@Param('answer_id') answerId: string) {
     return this.answerService.finedByAnswerID(answerId);
   }
