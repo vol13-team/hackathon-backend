@@ -21,4 +21,13 @@ export class IssueController {
   ) {
     return this.issueService.createIssue(issueDto, article_id);
   }
+
+  // アップデートのエンドポイントを追加
+  @Post('/update/:issue_id')
+  update(
+    @Param('issue_id') issue_id: string,
+    @Body() updateDto: CreateIssueDto,
+  ) {
+    return this.issueService.updateIssue(updateDto, issue_id);
+  }
 }
