@@ -38,13 +38,8 @@ $ yarn install
 # development
 $ yarn run start
 
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
-```
-
+db container 
+docker-compose up -d
 ## Test
 
 ```bash
