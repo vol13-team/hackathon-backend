@@ -11,8 +11,10 @@ export class QiitaApiService {
         title: item.title,
         url: item.url,
         user: item.user.id,
+        icon_url: item.user.profile_image_url,
       };
     });
+    console.log(jsonData);
     return data;
   }
   async search(query: string, page: number) {
@@ -24,6 +26,7 @@ export class QiitaApiService {
         title: item.title,
         url: item.url,
         user: item.user.id,
+        icon_url: item.user.profile_image_url,
       };
     });
     return data;
