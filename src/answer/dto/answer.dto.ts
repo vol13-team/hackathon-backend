@@ -1,3 +1,5 @@
 export class CreateAnswerDto {
-  selectOption: string;
+  select_option_id: string;
+  decision: boolean;
+  answerUserId: string;
 }

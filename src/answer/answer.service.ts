@@ -30,7 +30,14 @@ export class AnswerService {
   }
 
   async create(dto: CreateAnswerDto, issueId: string) {
-    console.log(dto, issueId);
+    const answer = await this.prismaService.answer.create({
+      data: {
+        answer_user_id: dto.answerUserId,
+        select_option_id: dto.select_option_id,
+        decision: dto.decision,
+        issue_id: issueId,
+      },
+    });
+    return answer;
   }
-  async getAns() {}
 }
