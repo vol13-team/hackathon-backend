@@ -27,7 +27,7 @@ model Issue {
   option2          String
   option3          String
   option4          String
-  correct_option    String
+  correct_option    String //コレクトオプション
   post_user         User       @relation(fields: [post_user_id], references: [user_id],onDelete: Cascade, onUpdate: Cascade)
   post_user_id       String
   explanation      String?
@@ -53,7 +53,7 @@ model Answer {
   issue_id       String
   answer_user     User     @relation(fields: [answer_user_id], references: [user_id],onDelete: Cascade, onUpdate: Cascade)
   answer_user_id   String
-  select_option String
+  select_option String"""
 }
 
 model QiitaArticle{
