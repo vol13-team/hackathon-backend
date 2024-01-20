@@ -48,12 +48,12 @@ model Article {
 
 model Answer {
   answer_id      String @id @default(uuid())
-  decision      Boolean
+  decision      Boolean?
   issue         Issue    @relation(fields: [issue_id], references: [issue_id],onDelete: Cascade, onUpdate: Cascade)
   issue_id       String
   answer_user     User     @relation(fields: [answer_user_id], references: [user_id],onDelete: Cascade, onUpdate: Cascade)
   answer_user_id   String
-  select_option_id String
+  select_option String
 }
 
 model QiitaArticle{
