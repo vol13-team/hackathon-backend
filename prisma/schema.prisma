@@ -55,3 +55,17 @@ model Answer {
   answer_user_id   String
   select_option_id String
 }
+
+model QiitaArticle{
+  qiita_article_id String @id @default(uuid())
+  title String 
+  url String @unique
+  user_id String
+  icon_url String
+  
+}
+
+model QiitaTag{
+  tag_id String @id @default(uuid())
+  tag_name String
+}
