@@ -24,7 +24,7 @@ export class ArticleController {
     return this.articleService.findOne(id);
   }
 
-  @Post()
+  @Post('/:id')
   create(@Body() dto: CreateArticleDto) {
     return this.articleService.create(dto);
   }

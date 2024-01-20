@@ -29,9 +29,9 @@ export class ArticleService {
     try {
       const article = await this.prisma.article.create({
         data: {
-          article_title: dto.articleTitle,
-          article_link: dto.articleLink,
-          article_user_name: dto.articleUserName,
+          article_title: dto.article_title,
+          article_link: dto.article_link,
+          article_user_name: dto.article_user_name,
         },
       });
       return article;
@@ -44,9 +44,9 @@ export class ArticleService {
       const article = await this.prisma.article.update({
         where: { article_id: id },
         data: {
-          article_title: dto.articleTitle,
-          article_link: dto.articleLink,
-          article_user_name: dto.articleUserName,
+          article_title: dto.article_title,
+          article_link: dto.article_link,
+          article_user_name: dto.article_user_name,
         },
       });
       return article;

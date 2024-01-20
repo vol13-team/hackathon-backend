@@ -14,11 +14,8 @@ export class IssueController {
   findByIssue(@Param('issue_id') issue_id_: string) {
     return this.issueService.findByIssue(issue_id_);
   }
-  @Post('/:article_id')
-  create(
-    @Param('article_id') article_id: string,
-    @Body() issueDto: CreateIssueDto,
-  ) {
+  @Post()
+  create(@Param('article_id') article_id: string, issueDto: CreateIssueDto) {
     return this.issueService.createIssue(issueDto, article_id);
   }
 

@@ -6,7 +6,7 @@ export class CreateIssueDto {
   issue_name: string;
   @IsNotEmpty()
   @IsString()
-  issueDetail: string;
+  issue_detail: string;
   @IsNotEmpty()
   @IsString()
   visibility: boolean;
