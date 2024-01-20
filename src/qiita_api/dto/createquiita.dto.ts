@@ -12,5 +12,5 @@ export class CreateQuiitaDto {
   user_id: string;
   @IsNotEmpty()
   @IsString()
-  tags: string;
+  icon_url: string;
 }
