@@ -1,16 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateIssueDto } from './dto';
-import { UserService } from 'src/user/user.service';
-import { ArticleService } from 'src/article/article.service';
 
 @Injectable()
 export class IssueService {
-  constructor(
-    private readonly prismaService: PrismaService,
-    private readonly articleService: ArticleService,
-    private readonly userService: UserService,
-  ) {}
+  constructor(private readonly prismaService: PrismaService) {}
 
   // 全部のissueを取得
   async findAll() {
@@ -44,7 +38,7 @@ export class IssueService {
           },
         },
         issue_name: issueDto.issue_name,
-        issue_detail: issueDto.issueDetail,
+        issue_detail: issueDto.issue_detail,
         visibility: issueDto.visibility,
         option1: issueDto.option1,
         option2: issueDto.option2,
@@ -66,7 +60,7 @@ export class IssueService {
       where: { issue_id: issue_id },
       data: {
         issue_name: issueDto.issue_name,
-        issue_detail: issueDto.issueDetail,
+        issue_detail: issueDto.issue_detail,
         visibility: issueDto.visibility,
         option1: issueDto.option1,
         option2: issueDto.option2,

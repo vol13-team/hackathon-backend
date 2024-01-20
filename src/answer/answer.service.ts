@@ -32,7 +32,7 @@ export class AnswerService {
   async create(dto: CreateAnswerDto, issueId: string) {
     const answer = await this.prismaService.answer.create({
       data: {
-        answer_user_id: dto.answerUserId,
+        answer_user_id: dto.answer_user_id,
         select_option: dto.select_option_id,
         decision: dto.decision,
         issue_id: issueId,

@@ -3,25 +3,25 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class CreateArticleDto {
   @IsString()
   @IsNotEmpty()
-  articleTitle: string;
+  article_title: string;
 
   @IsString()
   @IsNotEmpty()
-  articleLink: string;
+  article_link: string;
 
   @IsString()
-  articleUserName: string;
+  article_user_name: string;
 }
 
 export class UpdateArticleDto {
   @IsString()
   @IsNotEmpty()
-  articleTitle: string;
+  article_title: string;
 
   @IsString()
   @IsNotEmpty()
-  articleLink: string;
+  article_link: string;
 
   @IsString()
-  articleUserName: string;
+  article_user_name: string;
 }
