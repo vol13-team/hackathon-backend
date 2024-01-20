@@ -55,3 +55,11 @@ model Answer {
   answer_user_id   String
   select_option_id String
 }
+
+model Quiita{
+  title String @id @default(uuid())
+  url String?
+  user String
+  icon_url String
+  tags String
+}
